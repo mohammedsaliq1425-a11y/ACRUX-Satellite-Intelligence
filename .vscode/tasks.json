@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Acrux: Setup (one time)",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\setup.ps1",
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "Acrux: Backend",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\start-backend.ps1",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "group": "acrux", "reveal": "always" }
+    },
+    {
+      "label": "Acrux: Frontend",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\start-frontend.ps1",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "group": "acrux", "reveal": "always" }
+    },
+    {
+      "label": "Acrux: Start both",
+      "dependsOn": ["Acrux: Backend", "Acrux: Frontend"],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Acrux: Run tests",
+      "type": "shell",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\run-tests.ps1",
+      "problemMatcher": [],
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "panel": "dedicated", "reveal": "always" }
+    },
+    {
+      "label": "Acrux: Open in browser",
+      "type": "shell",
+      "command": "Start-Process http://localhost:5173",
+      "problemMatcher": []
+    }
+  ]
+}

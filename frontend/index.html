@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#060B18" />
+    <meta name="description" content="Project Acrux — an integrated satellite intelligence platform. Observe Earth. Understand Space. Predict the Future." />
+    <title>ACRUX — Project Acrux</title>
+    <style>
+      /* Boot screen shown until React mounts (removed in main.tsx). */
+      html, body { background: #060B18; margin: 0; }
+      #boot { position: fixed; inset: 0; display: grid; place-items: center; background: #060B18; color: #E8EEF8;
+              font-family: "Segoe UI", system-ui, sans-serif; z-index: 50; }
+      #boot .word { letter-spacing: .5em; font-weight: 600; font-size: 1.5rem; margin-right: -.5em; }
+      #boot .bar { margin: 1rem auto 0; width: 9rem; height: 2px; background: #1E2A45; overflow: hidden; border-radius: 2px; }
+      #boot .bar::after { content: ""; display: block; width: 40%; height: 100%; background: #22D3EE; animation: boot 1.2s ease-in-out infinite; }
+      @keyframes boot { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+      @media (prefers-reduced-motion: reduce) { #boot .bar::after { animation: none; width: 100%; } }
+    </style>
+  </head>
+  <body>
+    <div id="boot" role="status" aria-label="Loading ACRUX"><div style="text-align:center"><div class="word">ACRUX</div><div class="bar"></div></div></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

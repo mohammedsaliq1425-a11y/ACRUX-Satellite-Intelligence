@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (RGB triplets so Tailwind can apply opacity). */
+:root {
+  --c-bg: 6 11 24;          /* midnight navy */
+  --c-surface: 11 18 36;    /* deep blue */
+  --c-panel: 16 26 48;      /* raised panel */
+  --c-line: 30 42 69;       /* borders */
+  --c-electric: 59 130 246; /* primary interactions */
+  --c-signal: 34 211 238;   /* cyan: data highlights / active */
+  --c-accent: 139 92 246;   /* restrained violet: analytical accents */
+  --c-ink: 232 238 248;     /* primary text */
+  --c-mute: 148 163 184;    /* secondary text (>= 7:1 on midnight) */
+  --c-ok: 52 211 153;
+  --c-warn: 251 191 36;
+  --c-bad: 248 113 113;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; color-scheme: dark; }
+  body { @apply bg-midnight text-ink font-sans antialiased; }
+  :focus-visible { @apply outline-none ring-2 ring-signal ring-offset-2 ring-offset-midnight rounded-sm; }
+  ::selection { background: rgb(var(--c-electric) / 0.4); }
+  h1, h2, h3 { @apply tracking-tight; }
+}
+
+@layer components {
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-signal; }
+  .card { @apply rounded-xl border border-line bg-surface shadow-card; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
